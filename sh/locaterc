@@ -1,0 +1,21 @@
+#!/bin/bash
+
+[[ ! $# -gt 0 ]] && echo "locaterc [file ...]" 1>&2 && exit 1
+
+path=`pwd` # start in the current directory
+
+# stop trying when we get to root
+until [[ $path = "/" ]]; do
+  # try each of the provided files in order given
+  for file in $@; do
+    # output path to file if found
+    if [[ -f "$path/$file" ]]; then
+      echo "$path/$file"
+      exit
+    fi
+  done
+  
+  # if not found, descend one directory level and try again
+  cd "$path/.."
+  path=`pwd`
+done
