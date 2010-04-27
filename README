@@ -1,0 +1,5 @@
+$ pwd
+/home/mtodd/projects/sample_app/app/controllers/
+$ locaterc .rvmrc rvmrc
+/home/mtodd/projects/sample_app/.rvmrc
+$ 
